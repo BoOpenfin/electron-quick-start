@@ -6,9 +6,10 @@ const path = require('path')
 
 const newWindowBtn = document.getElementById('new-window')
 
-
 newWindowBtn.addEventListener('click', function (event) {
+  const filePath = path.join('file://', __dirname, '/index.html')
   let win = new BrowserWindow({ width: 400, height: 320 })
+  win.loadURL(filePath);
   win.on('close', function () { win = null })
   win.webContents.openDevTools();
   win.show()
